@@ -1,0 +1,6 @@
+LIBRARY	pactus_dll
+EXPORTS
+	WSARunStack
+	WSACleanStack
+SECTIONS
+	.SHARDATA	Read Write Shared
