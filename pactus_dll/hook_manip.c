@@ -1,6 +1,6 @@
 /*++ 
 
-  Nome do módulo:
+  Nome do mÃ³dulo:
   
 	hook_manip.c
 

